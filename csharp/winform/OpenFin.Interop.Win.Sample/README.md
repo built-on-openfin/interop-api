@@ -2,7 +2,7 @@
 
 This is an example of a Windows Form Application that can:
 
-* Connect to a broker (and application setup as an Interop Broker e.g. OpenFin Workspace https://www.openfin.co/workspace/)
+* Connect to a broker (an application setup as an Interop Broker e.g. OpenFin Workspace https://www.openfin.co/workspace/)
 * Create a broker (which others can connect to)
 * Fetch the list of contextual groups/channels from the current broker
 * Listen for contextual changes
