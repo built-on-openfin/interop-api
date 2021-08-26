@@ -5,6 +5,6 @@ namespace OpenFin.Interop.Win.Sample
     public class InstrumentContext : ContextBase
     {
         [JsonProperty("type")]
-        public override string Type => "instrument";
+        public override string Type => "fdc3.instrument";
     }
 }
