@@ -11,4 +11,10 @@
     <PackageReference Include="OpenfinDesktop" Version="17.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="preload.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

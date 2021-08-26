@@ -1,7 +1,13 @@
 ﻿async function init() {
-    await fin.Interop.init("IRESS");
+    try {
+        await fin.Interop.init("openfin-browser");
+    }
+    catch {
+        console.warn("openfin-browser broker already craeted.")
+    }
+    
 
-    fin.me.interop = fin.Interop.connectSync('IRESS', {
+    fin.me.interop = fin.Interop.connectSync('openfin-browser', {
         currentContextGroup: 'green'
     });
 }

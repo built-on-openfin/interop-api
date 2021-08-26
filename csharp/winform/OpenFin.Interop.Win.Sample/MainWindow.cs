@@ -23,10 +23,10 @@ namespace OpenFin.Interop.Win.Sample
             _openFin.InteropConnected += openFin_InteropConnected;
             _openFin.InteropContextReceived += openFin_InteropContextReceived;
             _openFin.InteropContextGroupsReceived += openFin_InteropContextGroupsReceived;
-            var appOptions = new Openfin.Desktop.ApplicationOptions("fs-chart", "fs-chart-uuid", "https://assets.finsemble.com/components/chart/technical-analysis-chart.html");
+            var appOptions = new Openfin.Desktop.ApplicationOptions("fs-chart", "fs-chart-uuid", "https://openfin-iex.experolabs.com/#/stock-quote");
             appOptions.SetProperty("fdc3InteropApi", "1.2");
             appOptions.MainWindowOptions.PreloadScripts = new List<Openfin.Desktop.PreloadScript>() { 
-                new Openfin.Desktop.PreloadScript(@"C:\Dev\OpenFin\Playgound\interop-api\csharp\winform\OpenFin.Interop.Win.Sample\preload.js", false)
+                new Openfin.Desktop.PreloadScript($"{Environment.CurrentDirectory}\\preload.js", false)
             };
             this.embeddedView.Initialize(_openFin.DotNetOptions, appOptions);
         }

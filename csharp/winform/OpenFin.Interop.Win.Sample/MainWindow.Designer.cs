@@ -44,11 +44,11 @@ namespace OpenFin.Interop.Win.Sample
             this.submitContextButton = new System.Windows.Forms.Button();
             this.connectToBrokerButton = new System.Windows.Forms.Button();
             this.createBrokerButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.embeddedViewPanel = new System.Windows.Forms.Panel();
             this.embeddedView = new Openfin.WinForm.EmbeddedView();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.embeddedViewPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -57,10 +57,10 @@ namespace OpenFin.Interop.Win.Sample
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFinStatusLabel,
             this.orderStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 659);
+            this.statusStrip.Location = new System.Drawing.Point(0, 935);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 28, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1226, 26);
+            this.statusStrip.Size = new System.Drawing.Size(1234, 26);
             this.statusStrip.TabIndex = 0;
             // 
             // openFinStatusLabel
@@ -192,8 +192,9 @@ namespace OpenFin.Interop.Win.Sample
             // 
             // submitContextButton
             // 
+            this.submitContextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.submitContextButton.Enabled = false;
-            this.submitContextButton.Location = new System.Drawing.Point(404, 538);
+            this.submitContextButton.Location = new System.Drawing.Point(392, 862);
             this.submitContextButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.submitContextButton.Name = "submitContextButton";
             this.submitContextButton.Size = new System.Drawing.Size(190, 53);
@@ -204,7 +205,8 @@ namespace OpenFin.Interop.Win.Sample
             // 
             // connectToBrokerButton
             // 
-            this.connectToBrokerButton.Location = new System.Drawing.Point(24, 538);
+            this.connectToBrokerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.connectToBrokerButton.Location = new System.Drawing.Point(23, 862);
             this.connectToBrokerButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.connectToBrokerButton.Name = "connectToBrokerButton";
             this.connectToBrokerButton.Size = new System.Drawing.Size(197, 53);
@@ -215,8 +217,9 @@ namespace OpenFin.Interop.Win.Sample
             // 
             // createBrokerButton
             // 
+            this.createBrokerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.createBrokerButton.Enabled = false;
-            this.createBrokerButton.Location = new System.Drawing.Point(230, 538);
+            this.createBrokerButton.Location = new System.Drawing.Point(224, 862);
             this.createBrokerButton.Margin = new System.Windows.Forms.Padding(4);
             this.createBrokerButton.Name = "createBrokerButton";
             this.createBrokerButton.Size = new System.Drawing.Size(166, 53);
@@ -225,13 +228,16 @@ namespace OpenFin.Interop.Win.Sample
             this.createBrokerButton.UseVisualStyleBackColor = true;
             this.createBrokerButton.Click += new System.EventHandler(this.createBrokerButton_Click);
             // 
-            // panel1
+            // embeddedViewPanel
             // 
-            this.panel1.Controls.Add(this.embeddedView);
-            this.panel1.Location = new System.Drawing.Point(603, 30);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(611, 560);
-            this.panel1.TabIndex = 5;
+            this.embeddedViewPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.embeddedViewPanel.Controls.Add(this.embeddedView);
+            this.embeddedViewPanel.Location = new System.Drawing.Point(603, 30);
+            this.embeddedViewPanel.Name = "embeddedViewPanel";
+            this.embeddedViewPanel.Size = new System.Drawing.Size(611, 885);
+            this.embeddedViewPanel.TabIndex = 5;
             // 
             // embeddedView
             // 
@@ -243,7 +249,7 @@ namespace OpenFin.Interop.Win.Sample
             this.embeddedView.OnNavigationRejected = null;
             this.embeddedView.OnReady = null;
             this.embeddedView.OpenfinWindow = null;
-            this.embeddedView.Size = new System.Drawing.Size(611, 560);
+            this.embeddedView.Size = new System.Drawing.Size(611, 885);
             this.embeddedView.TabIndex = 0;
             this.embeddedView.TabStop = false;
             this.embeddedView.Text = "embeddedView3";
@@ -252,14 +258,13 @@ namespace OpenFin.Interop.Win.Sample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 685);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1234, 961);
+            this.Controls.Add(this.embeddedViewPanel);
             this.Controls.Add(this.createBrokerButton);
             this.Controls.Add(this.connectToBrokerButton);
             this.Controls.Add(this.submitContextButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "MainWindow";
             this.Text = "Interop Instrument Example Tool";
@@ -267,7 +272,7 @@ namespace OpenFin.Interop.Win.Sample
             this.statusStrip.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.embeddedViewPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,7 +295,7 @@ namespace OpenFin.Interop.Win.Sample
         private System.Windows.Forms.ComboBox instrumentComboBox;
         private System.Windows.Forms.TextBox interopBrokerInput;
         private System.Windows.Forms.Button createBrokerButton;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel embeddedViewPanel;
         private Openfin.WinForm.EmbeddedView embeddedView;
     }
 }
