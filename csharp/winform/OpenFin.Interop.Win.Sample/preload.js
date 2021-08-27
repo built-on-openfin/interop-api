@@ -3,7 +3,7 @@
         await fin.Interop.init("openfin-browser");
     }
     catch {
-        console.warn("openfin-browser broker already craeted.")
+        console.warn("openfin-browser broker already created.")
     }
     
 
