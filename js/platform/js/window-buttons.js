@@ -1,6 +1,6 @@
 import { html, render } from 'https://unpkg.com/lit-html@1.0.0/lit-html.js';
 
-class ButtonsWrapper extends HTMLElement {
+class WindowButtons extends HTMLElement {
 
     constructor() {
         super();
@@ -26,4 +26,4 @@ class ButtonsWrapper extends HTMLElement {
 
 }
 
-customElements.define('button-wrapper', ButtonsWrapper);
+customElements.define('window-buttons', WindowButtons);

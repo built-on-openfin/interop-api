@@ -1,6 +1,6 @@
 import { html, render } from "https://unpkg.com/lit-html@1.0.0/lit-html.js";
 import "./interop-context-group-indicator.js";
-import "./window-close-component.js";
+import "./window-buttons.js";
 
 class TitleBarMain extends HTMLElement {
     constructor() {
@@ -14,7 +14,7 @@ class TitleBarMain extends HTMLElement {
             <div class="title-bar-draggable">
                     <div id="title"></div>
             </div>
-            <button-wrapper id="buttons-wrapper"></button-wrapper>
+            <window-buttons id="buttons-wrapper"></window-buttons>
         </div>`;
         return render(titleBar, this);
     }
