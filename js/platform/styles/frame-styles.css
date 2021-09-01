@@ -1,0 +1,141 @@
+:root {
+    --active-tab: #3a3a3a;
+    --tab-bar-background: #262626;
+    --frame-background: #121212;
+    --title-bar: #000000;
+    --tab-text: #ffffff;
+    --tab-border-top-color: #00374F;
+    --tab-border-top-highlight-color: #0098CA;
+    --title-bar-height: 22px;
+    --corners-radius: 5px;
+    --splitter-width: 4px;
+
+    --body-container-padding-left: 4px;
+
+    --layout-container-padding-top: 0px;
+    --layout-container-padding-bottom: 5px;
+    --layout-container-padding-left: 4px;
+    --layout-container-padding-right: 5px;
+
+    --sidebar-width: 120px;
+
+    --layout-container-width: calc(
+        100% - var(--layout-container-padding-left) -
+            var(--layout-container-padding-right)
+    );
+
+    --frame-background-color: var(--frame-background);
+    --title-bar-background-color: var(--title-bar);
+    --tabs-bar-background-color: var(--tab-bar-background);
+    --tab-background-color: var(--frame-background);
+    --tab-background-color-active: var(--active-tab);
+    --tab-text-color: var(--tab-text);
+    --splitter-color: var(--frame-background);
+    --color-behind-views: var(
+        --active-tab
+    ); /* only seen if there's a problem with the view */
+}
+
+body {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#body-container {
+    display: flex;
+}
+
+.wrapper_title {
+    visibility: hidden;
+}
+
+.last-tab-button {
+    visibility: hidden;
+}
+
+save-restore-layout {
+    -webkit-app-region: none;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 0px 5px;
+}
+
+selected-instrument-name {
+    color: white;
+    font-size: smaller;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+instrument-launcher {
+    color: white;
+    padding: 0px 5px;
+}
+
+lock-unlock {
+    color: white;
+    padding: 0px 5px;
+}
+
+pin-unpin {
+    color: white;
+    padding: 0px 5px;
+}
+
+window-maximize {
+    color: white;
+    padding: 0px 5px;
+}
+
+window-minimize {
+    color: white;
+    padding: 0px 5px;
+}
+
+window-close {
+    color: white;
+    padding: 0px 5px;
+}
+
+focus-layout, save-snapshot-close-all,
+more-menu, magnetise-layout {
+    color: white;
+    padding: 0px 5px;
+}
+
+interop-context-group-indicator{
+    display: inline-block;
+    white-space: nowrap;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn ease 1s;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  body::-webkit-scrollbar-track {
+    background: orange;        /* color of the tracking area */
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+  }

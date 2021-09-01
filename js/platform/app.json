@@ -1,0 +1,187 @@
+{
+    "runtime": {
+        "arguments": "--v=1 --inspect",
+        "version": "stable"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "Platform Demo",
+        "icon": "https://openfin.github.io/golden-prototype/favicon.ico",
+        "name": "Platform Generated App"
+    },
+    "platform": {
+        "uuid": "Interop Example With Platform",
+        "applicationIcon": "https://openfin.github.io/golden-prototype/favicon.ico",
+        "autoShow": false,
+        "providerUrl": "http://localhost:8080/windows/provider-window-main.html",
+        "defaultWindowOptions": {
+            "url": "http://localhost:8080/windows/platform-window-main.html",
+            "contextMenu": true,
+            "backgroundColor": "#000000",
+            "showBackgroundImages": true
+        }
+    },
+    "snapshot": {
+        "windows": [
+            {
+                "defaultWidth": 800,
+                "defaultHeight": 600,
+                "defaultLeft": 0,
+                "defaultTop": 0,
+                "saveWindowState": false,
+                "backgroundThrottling": true,
+                "layout": {
+                    "content": [
+                        {
+                            "type": "row",
+                            "id": "mainRow",
+                            "isClosable": true,
+                            "reorderEnabled": true,
+                            "title": "",
+                            "content": [
+                                {
+                                    "type": "column",
+                                    "isClosable": true,
+                                    "reorderEnabled": true,
+                                    "title": "",
+                                    "width": 50,
+                                    "content": [
+                                        {
+                                            "type": "stack",
+                                            "width": 50,
+                                            "height": 50,
+                                            "isClosable": true,
+                                            "reorderEnabled": true,
+                                            "title": "",
+                                            "activeItemIndex": 0,
+                                            "content": [
+                                                {
+                                                    "type": "component",
+                                                    "componentName": "view",
+                                                    "componentState": {
+                                                        "interop": {
+                                                            "contextDeclaration": [
+                                                                "instrument"
+                                                            ]
+                                                        },
+                                                        "customData": {
+                                                            "name": "Comp Chart",
+                                                            "preselectPeers": true,
+                                                            "id": "86fa767a-822e-467a-97ed-e19faefd5f50"
+                                                        },
+                                                        "url": "https://openfin-iex.experolabs.com/#/stock-quote",
+                                                        "name": "component_1629452293381"
+                                                    },
+                                                    "isClosable": true,
+                                                    "reorderEnabled": true,
+                                                    "title": "view"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "stack",
+                                            "header": {},
+                                            "isClosable": true,
+                                            "reorderEnabled": true,
+                                            "title": "",
+                                            "activeItemIndex": 0,
+                                            "height": 50,
+                                            "content": [
+                                                {
+                                                    "type": "component",
+                                                    "componentName": "view",
+                                                    "componentState": {
+                                                        "interop": {
+                                                            "contextDeclaration": [
+                                                                "instrument"
+                                                            ]
+                                                        },
+                                                        "customData": {
+                                                            "id": "45660687-8cf4-4dfb-b12d-a3c4e3278712"
+                                                        },
+                                                        "url": "https://openfin-iex.experolabs.com/#/company-stats",
+                                                        "name": "component_1629452355145"
+                                                    },
+                                                    "isClosable": true,
+                                                    "reorderEnabled": true,
+                                                    "title": "view"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "column",
+                                    "isClosable": true,
+                                    "reorderEnabled": true,
+                                    "title": "",
+                                    "width": 50,
+                                    "content": [
+                                        {
+                                            "type": "stack",
+                                            "height": 50,
+                                            "isClosable": true,
+                                            "reorderEnabled": true,
+                                            "title": "",
+                                            "activeItemIndex": 0,
+                                            "content": [
+                                                {
+                                                    "type": "component",
+                                                    "componentName": "view",
+                                                    "componentState": {
+                                                        "interop": {
+                                                            "contextDeclaration": [
+                                                                "instrument"
+                                                            ]
+                                                        },
+                                                        "customData": {
+                                                            "id": "2574a7b5-678e-4d4a-a30b-5176a7513ea7"
+                                                        },
+                                                        "url": "https://openfin-iex.experolabs.com/#/description",
+                                                        "name": "component_1629452321992"
+                                                    },
+                                                    "isClosable": true,
+                                                    "reorderEnabled": true,
+                                                    "title": "view"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "stack",
+                                            "height": 50,
+                                            "isClosable": true,
+                                            "reorderEnabled": true,
+                                            "title": "",
+                                            "activeItemIndex": 0,
+                                            "content": [
+                                                {
+                                                    "type": "component",
+                                                    "componentName": "view",
+                                                    "componentState": {
+                                                        "interop": {
+                                                            "contextDeclaration": [
+                                                                "instrument"
+                                                            ]
+                                                        },
+                                                        "customData": {
+                                                            "id": "0484f8ce-4299-4089-98d3-1457343b6368"
+                                                        },
+                                                        "url": "https://openfin-iex.experolabs.com/#/news",
+                                                        "name": "component_1629452338587"
+                                                    },
+                                                    "isClosable": true,
+                                                    "reorderEnabled": true,
+                                                    "title": "view"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,2 @@
+fin.Platform.init();
+
