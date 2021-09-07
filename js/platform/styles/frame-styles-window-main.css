@@ -1,0 +1,17 @@
+@import "frame-styles.css";
+
+.last-tab-button {
+    visibility: hidden;
+}
+
+.title-bar-draggable {
+    margin: 3px 0 0 7px;
+}
+
+#title-bar i {
+    opacity: 0.8;
+}
+
+#title-bar i:hover {
+    opacity: 1;
+}
