@@ -1,0 +1,108 @@
+{
+    "runtime": {
+        "arguments": "--v=1 --inspect",
+        "version": "stable"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "Platform Demo",
+        "icon": "https://openfin.github.io/golden-prototype/favicon.ico",
+        "name": "Platform Generated App"
+    },
+    "platform": {
+        "uuid": "Interop Example With Platform",
+        "applicationIcon": "https://openfin.github.io/golden-prototype/favicon.ico",
+        "autoShow": false,
+        "providerUrl": "http://localhost:8080/windows/provider-window-main.html",
+        "defaultWindowOptions": {
+            "url": "http://localhost:8080/windows/platform-window-main.html",
+            "contextMenu": true,
+            "backgroundColor": "#000000",
+            "showBackgroundImages": true
+        },
+        "defaultViewOptions": {
+            "preloadScripts": [
+                {
+                    "url": "http://localhost:8080/js/view.js"
+                }
+            ]
+        }
+    },
+    "snapshot": {
+        "windows": [
+            {
+                "defaultWidth": 800,
+                "defaultHeight": 600,
+                "defaultLeft": 0,
+                "defaultTop": 0,
+                "saveWindowState": false,
+                "backgroundThrottling": true,
+                "layout": {
+                    "content": [
+                        {
+                            "type": "column",
+                            "isClosable": true,
+                            "reorderEnabled": true,
+                            "title": "",
+                            "width": 100,
+                            "content": [
+                                {
+                                    "type": "stack",
+                                    "height": 50,
+                                    "isClosable": true,
+                                    "reorderEnabled": true,
+                                    "title": "",
+                                    "activeItemIndex": 0,
+                                    "content": [
+                                        {
+                                            "type": "component",
+                                            "componentName": "view",
+                                            "componentState": {
+                                                "interop": {
+                                                    "contextDeclaration": [
+                                                        "instrument"
+                                                    ]
+                                                },
+                                                "url": "https://stockanalysis.com/stocks/pton/",
+                                                "name": "component_1631880178491"
+                                            },
+                                            "isClosable": true,
+                                            "reorderEnabled": true,
+                                            "title": "view"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "stack",
+                                    "height": 50,
+                                    "isClosable": true,
+                                    "reorderEnabled": true,
+                                    "title": "",
+                                    "activeItemIndex": 0,
+                                    "content": [
+                                        {
+                                            "type": "component",
+                                            "componentName": "view",
+                                            "componentState": {
+                                                "interop": {
+                                                    "contextDeclaration": [
+                                                        "instrument"
+                                                    ]
+                                                },
+                                                "url": "https://stockanalysis.com/stocks/aapl/",
+                                                "name": "component_1631880183517"
+                                            },
+                                            "isClosable": true,
+                                            "reorderEnabled": true,
+                                            "title": "view"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -64,7 +64,6 @@ class InteropContextGroupIndicatorComponent extends HTMLElement {
         //await fin.Interop.init('openfin-browser');
         //fin.me.interop = fin.Interop.connectSync('openfin-browser');
         let contextGroups = await fin.me.interop.getContextGroups();
-
         contextGroups.forEach(contextGroup => {
             this.availableContextGroups.push({ id: contextGroup.id, color: contextGroup.displayMetadata.color });
         });
