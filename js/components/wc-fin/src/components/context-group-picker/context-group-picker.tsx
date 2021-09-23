@@ -81,6 +81,7 @@ export class ContextGroupPicker {
       if (this.bindSelf) {
         await fin.me.interop.joinContextGroup(contextGroupId, fin.me.identity);
       }
+
     }
   }
 
@@ -102,6 +103,13 @@ export class ContextGroupPicker {
     }
   }
 
+  async saveSelectedContextGroup(contextGroupId:string) {
+    if(this.bindSelf === false) {
+      // if we are not assigning the context group against ourselves but only childViews then it will not fall under interop within options. Save to a backup location.
+      await fin.me.updateOptions({customData: { selectedContextGroup: contextGroupId }});
+    }
+  }
+
   async updateContextGroup(contextGroupId: string, viewIdentity?: any, deselectOnMatch = true) {
     let selectedContextGroup = this.availableContextGroups.find(entry => entry.id === contextGroupId);
 
@@ -117,6 +125,8 @@ export class ContextGroupPicker {
         this.contextGroupId = contextGroupId;
         await this.joinContextGroup(contextGroupId, viewIdentity);
       }
+
+      await this.saveSelectedContextGroup(this.contextGroupId);
       this.showContextGroupList = false;
     }
   }
@@ -177,6 +187,19 @@ export class ContextGroupPicker {
         if (contextGroupId !== undefined && contextGroupId !== null) {
           await this.updateContextGroup(contextGroupId);
         }
+      }
+
+      if(this.contextGroupId === undefined) {
+        let options = await fin.me.getOptions();
+        let selectedContextGroup: string;
+
+        if(options.interop !== undefined && options.interop.currentContextGroup !== undefined) {
+            selectedContextGroup = options.interop.currentContextGroup; 
+        } else if(this.bindSelf === false && options.customData !== undefined && options.customData.selectedContextGroup !== undefined) {
+            selectedContextGroup = options.customData.selectedContextGroup;
+        }
+
+        await this.updateContextGroup(selectedContextGroup);
       }
     }
   }
