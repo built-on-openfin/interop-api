@@ -120,10 +120,15 @@ export class ContextGroupPicker {
         this.iconId = undefined;
         await this.leaveContextGroup(viewIdentity);
       } else {
+        let joinAllViews = this.contextGroupId === undefined;
         this.iconColor = selectedContextGroup.color;
         this.iconId = selectedContextGroup.id;
         this.contextGroupId = contextGroupId;
-        await this.joinContextGroup(contextGroupId, viewIdentity);
+        if(joinAllViews) {
+          await this.joinContextGroup(contextGroupId);
+        } else {
+          await this.joinContextGroup(contextGroupId, viewIdentity);
+        }
       }
 
       await this.saveSelectedContextGroup(this.contextGroupId);

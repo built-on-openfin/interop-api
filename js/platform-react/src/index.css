@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  padding: 0px;
+  overflow: hidden;
+  background-color: #282c34;
+}
+
+:root {
+  --active-tab: #3a3a3a;
+  --tab-bar-background: #262626;
+  --frame-background: #121212;
+  --title-bar: #000000;
+  --tab-text: #ffffff;
+  --tab-border-top-color: #00374F;
+  --tab-border-top-highlight-color: #0098CA;
+  --title-bar-height: 22px;
+  --corners-radius: 5px;
+  --splitter-width: 4px;
+
+  --body-container-padding-left: 4px;
+
+  --layout-container-padding-top: 0px;
+  --layout-container-padding-bottom: 5px;
+  --layout-container-padding-left: 4px;
+  --layout-container-padding-right: 5px;
+
+  --sidebar-width: 120px;
+
+  --layout-container-width: calc(
+      100% - var(--layout-container-padding-left) -
+          var(--layout-container-padding-right)
+  );
+
+  --frame-background-color: var(--frame-background);
+  --title-bar-background-color: var(--title-bar);
+  --tabs-bar-background-color: var(--tab-bar-background);
+  --tab-background-color: var(--frame-background);
+  --tab-background-color-active: var(--active-tab);
+  --tab-text-color: var(--tab-text);
+  --splitter-color: var(--frame-background);
+  --color-behind-views: var(
+      --active-tab
+  ); /* only seen if there's a problem with the view */
+}
+
+
+#body-container {
+  display: flex;
+}
+
+.wrapper_title {
+  visibility: hidden;
+}
+
+.last-tab-button {
+  visibility: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: orange;        /* color of the tracking area */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: blue;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid orange;  /* creates padding around scroll thumb */
+}
+
+.last-tab-button {
+  visibility: hidden;
+}
+
+.title-bar-draggable {
+  margin: 3px 0 0 7px;
+}
+
+#title-bar i {
+  opacity: 0.8;
+}
+
+#title-bar i:hover {
+  opacity: 1;
+}
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
