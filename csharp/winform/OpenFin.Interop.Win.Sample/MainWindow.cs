@@ -8,13 +8,16 @@ namespace OpenFin.Interop.Win.Sample
     public partial class MainWindow : Form
     {
         OpenFinIntegration _openFin;
+        DataSource _dataSource;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            instrumentComboBox.SelectedIndex = 0;
+            _dataSource = new DataSource();
+            ContextItemComboBox.SelectedIndex = 0;
             contextGroupComboBox.SelectedIndex = 0;
+            contextTypeDropDown.SelectedIndex = 0;
 
             // OpenFin Integration
             _openFin = new OpenFinIntegration();
@@ -23,17 +26,11 @@ namespace OpenFin.Interop.Win.Sample
             _openFin.InteropConnected += openFin_InteropConnected;
             _openFin.InteropContextReceived += openFin_InteropContextReceived;
             _openFin.InteropContextGroupsReceived += openFin_InteropContextGroupsReceived;
-            var appOptions = new Openfin.Desktop.ApplicationOptions("fs-chart", "fs-chart-uuid", "https://openfin-iex.experolabs.com/#/stock-quote");
-            appOptions.SetProperty("fdc3InteropApi", "1.2");
-            appOptions.MainWindowOptions.PreloadScripts = new List<Openfin.Desktop.PreloadScript>() { 
-                new Openfin.Desktop.PreloadScript($"{Environment.CurrentDirectory}\\preload.js", false)
-            };
-            this.embeddedView.Initialize(_openFin.DotNetOptions, appOptions);
         }
 
         private void submitContextButton_Click(object sender, EventArgs e)
         {
-            _openFin.SendBroadcast(instrumentComboBox.SelectedItem.ToString());
+            _openFin.SendBroadcast(ContextItemComboBox.SelectedItem.ToString(), contextTypeDropDown.SelectedItem.ToString());
         }
 
 
@@ -46,15 +43,28 @@ namespace OpenFin.Interop.Win.Sample
                 interopBrokerInput.Text = broker;
             }
             _openFin.ConnectToInteropBroker(broker);
+            setWebView(broker);
         }
 
-
+        private void setWebView(string broker)
+        {
+            var appOptions = new Openfin.Desktop.ApplicationOptions("interop-sample", "interop-sample-uuid", "https://fdc3.finos.org/toolbox/fdc3-workbench/");
+            appOptions.SetProperty("fdc3InteropApi", "1.2");
+            appOptions.MainWindowOptions.PreloadScripts = new List<Openfin.Desktop.PreloadScript>() {
+                new Openfin.Desktop.PreloadScript($"{Environment.CurrentDirectory}\\preload.js", false)
+            };
+            var customData = new Dictionary<string, object>();
+            customData.Add("brokerId", broker);
+            appOptions.MainWindowOptions.CustomData = customData;
+            this.embeddedView.Initialize(_openFin.DotNetOptions, appOptions);
+        }
         private void createBrokerButton_Click(object sender, EventArgs e)
         {
             var broker = interopBrokerInput.Text;
             if (broker != "" && broker != "openfin-browser")
             {
                 _openFin.CreateInteropBroker(broker);
+                setWebView(broker);
             }
         }
 
@@ -90,16 +100,31 @@ namespace OpenFin.Interop.Win.Sample
             }));
         }
 
-        private void openFin_InteropContextReceived(object sender, InstrumentContextReceivedEventArgs e)
+        private void openFin_InteropContextReceived(object sender, ContextReceivedEventArgs e)
         {
             Invoke(new Action(() =>
             {
-                var contextInstrument = "Unknown Context Received";
+                var contextReceived = "Unknown Context Received";
                 if(e.InstrumentContext != null)
                 {
-                    contextInstrument = e.InstrumentContext.Id["ticker"];
+                    contextReceived = e.InstrumentContext.Id["ticker"];
+                    receivedContext.Text = contextReceived;
                 }
-                receivedContext.Text = contextInstrument;
+                if (e.Fdc3InstrumentContext != null)
+                {
+                    contextReceived = e.Fdc3InstrumentContext.Id["ticker"];
+                    receivedContext.Text = contextReceived;
+                }
+                if (e.Fdc3ContactContext != null)
+                {
+                    contextReceived = e.Fdc3ContactContext.Name;
+                    receivedContext.Text = contextReceived;
+                }
+                if (e.Fdc3OrganizationContext != null)
+                {
+                    contextReceived = e.Fdc3OrganizationContext.Name;
+                    receivedContext.Text = contextReceived;
+                }
             }));
         }
 
@@ -140,6 +165,35 @@ namespace OpenFin.Interop.Win.Sample
         private void interopBrokerInput_TextChanged(object sender, EventArgs e)
         {
             createBrokerButton.Enabled = EnableCreateBroker(interopBrokerInput.Text);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contextTypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ContextInputLabel.Text = contextTypeDropDown.SelectedItem as string;
+
+            switch (contextTypeDropDown.SelectedItem)
+            {
+                case "Instrument":
+                    {
+                        ContextItemComboBox.DataSource = _dataSource.Instruments.DataSource;
+                        break;
+                    }
+                case "Contact":
+                    {
+                        ContextItemComboBox.DataSource = _dataSource.Contacts.DataSource;
+                        break;
+                    }
+                case "Organization":
+                    {
+                        ContextItemComboBox.DataSource = _dataSource.Organizations.DataSource;
+                        break;
+                    }
+            }
         }
     }
 }

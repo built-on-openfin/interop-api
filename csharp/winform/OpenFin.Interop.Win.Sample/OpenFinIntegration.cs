@@ -14,11 +14,14 @@ namespace OpenFin.Interop.Win.Sample
         private readonly Runtime _runtime;
         private InteropClient _interopClient;
         private InteropBroker _interopBroker;
+        private DataSource _dataSource;
 
         public RuntimeOptions DotNetOptions { get; }
 
         public OpenFinIntegration(string uuid = null)
         {
+            _dataSource = new DataSource();
+
             if(uuid != null)
             {
                 DotNetUuid = uuid;
@@ -26,7 +29,7 @@ namespace OpenFin.Interop.Win.Sample
             else
             {
                 int count = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length;
-                DotNetUuid = "interop-winfom-sample-" + count;
+                DotNetUuid = "interop-winform-sample-" + count;
             }
 
             DotNetOptions = new RuntimeOptions()
@@ -43,7 +46,7 @@ namespace OpenFin.Interop.Win.Sample
         public event EventHandler RuntimeConnected;
         public event EventHandler RuntimeDisconnected;
         public event EventHandler InteropConnected;
-        public event EventHandler<InstrumentContextReceivedEventArgs> InteropContextReceived;
+        public event EventHandler<ContextReceivedEventArgs> InteropContextReceived;
         public event EventHandler<InteropContextGroupsReceivedEventArgs> InteropContextGroupsReceived;
 
         private async Task<InteropClient> ConnectAsync(string brokerName)
@@ -62,7 +65,7 @@ namespace OpenFin.Interop.Win.Sample
 
             await _interopClient.AddContextHandlerAsync(ctx => {
                 Console.WriteLine("Interop Context Received!");
-                InteropContextReceived?.Invoke(this, new InstrumentContextReceivedEventArgs(ctx));
+                InteropContextReceived?.Invoke(this, new ContextReceivedEventArgs(ctx));
             });
             var c = _runtime.WrapApplication("openfin-browser");
             
@@ -72,11 +75,33 @@ namespace OpenFin.Interop.Win.Sample
             InteropConnected?.Invoke(this, EventArgs.Empty);
         }
 
-        public void SendBroadcast(string instrument)
+        public void SendBroadcast(string item, string contextType)
         {
-            var instrumentContext = new InstrumentContext();
-            instrumentContext.Id.Add("ticker", instrument);
-            _interopClient.SetContextAsync(instrumentContext);
+            if(contextType == "Instrument")
+            {
+                var instrumentContext = new InstrumentContext();
+                var fdc3InstrumentContext = new Fdc3InstrumentContext();
+                instrumentContext.Id.Add("ticker", item);
+                fdc3InstrumentContext.Id.Add("ticker", item);
+                _interopClient.SetContextAsync(instrumentContext);
+                _interopClient.SetContextAsync(fdc3InstrumentContext);
+            }
+
+            if (contextType == "Contact")
+            {
+                var contactContext = new Fdc3ContactContext();
+                contactContext.Name = item;
+                contactContext.Id.Add("email", _dataSource.GetEmail(item));
+                _interopClient.SetContextAsync(contactContext);
+            }
+
+            if (contextType == "Organization")
+            {
+                var organizationContext = new Fdc3OrganizationContext();
+                organizationContext.Name = item;
+                organizationContext.Id.Add("PERMID", _dataSource.GetCompanyId(item));
+                _interopClient.SetContextAsync(organizationContext);
+            }
         }
 
         public async void LeaveContextGroup()
