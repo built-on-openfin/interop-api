@@ -1,0 +1,10 @@
+.metadata/
+/target/
+.settings/
+.idea/compiler.xml
+.project
+.idea/misc.xml
+.idea/jarRepositories.xml
+.idea/vcs.xml
+.idea/compiler.xml
+.idea/jarRepositories.xml
