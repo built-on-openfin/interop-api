@@ -10,6 +10,8 @@ public class JavaTest implements ActionListener{
 	static InteropTest i = new InteropTest();
 	JLabel ticker = new JLabel("Empty");
 	JComboBox tickersCB;
+	JComboBox JoinChannelCB;
+	JComboBox SetChannelCB;
 	String platform;
 	public JavaTest() {
     	JFrame frame = new JFrame();
@@ -21,18 +23,18 @@ public class JavaTest implements ActionListener{
         
 		String[] tickers = { "aapl", "msft", "goog", "tsla" };
 		tickersCB = new JComboBox(tickers);
-		//tickersCB.putClientProperty("join", false);
+		tickersCB.putClientProperty("join", false);
 		tickersCB.setSelectedIndex(0);
-		//tickersCB.addActionListener(this);
+		tickersCB.addActionListener(this);
 		
 		String[] petStrings = { "red", "green", "pink", "orange", "purple", "yellow" };
 
-		JComboBox JoinChannelCB = new JComboBox(petStrings);
+		JoinChannelCB = new JComboBox(petStrings);
 		JoinChannelCB.putClientProperty("join", true);
 		JoinChannelCB.setSelectedIndex(1);
 		JoinChannelCB.addActionListener(this);
 		
-		JComboBox SetChannelCB = new JComboBox(petStrings);
+		SetChannelCB = new JComboBox(petStrings);
 		SetChannelCB.putClientProperty("join", false);
 		SetChannelCB.setSelectedIndex(1);
 		SetChannelCB.addActionListener(this);
@@ -67,13 +69,13 @@ public class JavaTest implements ActionListener{
 	@Override
 	public void actionPerformed(java.awt.event.ActionEvent e) {
         JComboBox cb = (JComboBox)e.getSource();
-        String color = (String)cb.getSelectedItem();
+        String setColor = (String)cb.getSelectedItem();
+		String joinColor = (String)cb.getSelectedItem();
         try {
         	if((boolean) cb.getClientProperty("join")) {
-        		i.joinAllGroups(color,this);
+        		i.joinAllGroups(JoinChannelCB.getSelectedItem().toString(),this);
         	} else {
-        		String a = tickersCB.getSelectedItem().toString();
-        		i.clientSetContext(color, tickersCB.getSelectedItem().toString(), platform);
+				i.clientSetContext(SetChannelCB.getSelectedItem().toString(), tickersCB.getSelectedItem().toString(), platform);
         	}
 		} catch (Exception e1) {
 			e1.printStackTrace();
