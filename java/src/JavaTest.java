@@ -21,7 +21,7 @@ public class JavaTest implements ActionListener{
 		JLabel LabelTicker = new JLabel("Select ticker symbol:");
         platform = JOptionPane.showInputDialog("Enter Platform id:");
         
-		String[] tickers = { "aapl", "msft", "goog", "tsla" };
+		String[] tickers = { "AAPL", "MSFT", "GOOG", "TSLA" };
 		tickersCB = new JComboBox(tickers);
 		tickersCB.putClientProperty("join", false);
 		tickersCB.setSelectedIndex(0);
