@@ -167,11 +167,6 @@ namespace OpenFin.Interop.Win.Sample
             createBrokerButton.Enabled = EnableCreateBroker(interopBrokerInput.Text);
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void contextTypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             ContextInputLabel.Text = contextTypeDropDown.SelectedItem as string;
