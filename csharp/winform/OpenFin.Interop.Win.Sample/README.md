@@ -12,8 +12,3 @@ This is an example of a Windows Form Application that can:
 * Creating and receiving an instrument context
 
 This application can be have multiple instances so that one can be the broker while the others connect to it (just provide a custom broker name and the Create Broker button will be enabled).
-
-<a href="https://www.loom.com/share/841e05c225024ca6a44324f18fc3ed4d">
-    <p>Interop Instrument Example Tool - Watch Video</p>
-    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/841e05c225024ca6a44324f18fc3ed4d-with-play.gif">
-  </a>
