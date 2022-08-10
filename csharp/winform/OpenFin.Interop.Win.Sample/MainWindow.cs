@@ -26,6 +26,7 @@ namespace OpenFin.Interop.Win.Sample
             _openFin.InteropConnected += openFin_InteropConnected;
             _openFin.InteropContextReceived += openFin_InteropContextReceived;
             _openFin.InteropContextGroupsReceived += openFin_InteropContextGroupsReceived;
+            _openFin.IntentResultReceived += _openFin_IntentResultReceived;
         }
 
         private void submitContextButton_Click(object sender, EventArgs e)
@@ -97,6 +98,7 @@ namespace OpenFin.Interop.Win.Sample
                 connectToBrokerButton.Enabled = false;
                 createBrokerButton.Enabled = false;
                 interopBrokerInput.Enabled = false;
+                fireIntent.Enabled = true;
             }));
         }
 
@@ -126,6 +128,19 @@ namespace OpenFin.Interop.Win.Sample
                     receivedContext.Text = contextReceived;
                 }
             }));
+        }
+
+
+        private void _openFin_IntentResultReceived(object sender, IntentResolutionReceivedEventArgs e)
+        {
+            if (e.IsDismissed)
+            {
+                receivedContext.Text = "Intent Cancelled";
+            }
+            else
+            {
+                receivedContext.Text = $"Intent Resolution Source: {e.Source} Version: {(string.IsNullOrWhiteSpace(e.Version) ? "n/a" : e.Version)}";
+            }
         }
 
         private void openFin_InteropContextGroupsReceived(object sender, InteropContextGroupsReceivedEventArgs e)
@@ -189,6 +204,11 @@ namespace OpenFin.Interop.Win.Sample
                         break;
                     }
             }
+        }
+
+        private void fireIntent_Click(object sender, EventArgs e)
+        {
+            _openFin.FireIntent();
         }
     }
 }

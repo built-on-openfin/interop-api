@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Openfin.Winform" Version="17.0.0" />
-    <PackageReference Include="OpenfinDesktop" Version="17.0.0" />
+    <PackageReference Include="Openfin.Winform" Version="17.4.0" />
+    <PackageReference Include="OpenfinDesktop" Version="17.4.0" />
   </ItemGroup>
 
   <ItemGroup>

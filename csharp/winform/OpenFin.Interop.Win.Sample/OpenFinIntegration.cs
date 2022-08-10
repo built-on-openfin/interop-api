@@ -1,4 +1,5 @@
-﻿using Openfin.Desktop;
+﻿using Newtonsoft.Json;
+using Openfin.Desktop;
 using Openfin.Desktop.InteropAPI;
 using System;
 using System.Diagnostics;
@@ -48,6 +49,7 @@ namespace OpenFin.Interop.Win.Sample
         public event EventHandler InteropConnected;
         public event EventHandler<ContextReceivedEventArgs> InteropContextReceived;
         public event EventHandler<InteropContextGroupsReceivedEventArgs> InteropContextGroupsReceived;
+        public event EventHandler<IntentResolutionReceivedEventArgs> IntentResultReceived;
 
         private async Task<InteropClient> ConnectAsync(string brokerName)
         {
@@ -145,6 +147,35 @@ namespace OpenFin.Interop.Win.Sample
         private void Runtime_Disconnected(object sender, EventArgs e)
         {
             RuntimeDisconnected?.Invoke(this, EventArgs.Empty);
+        }
+
+        public async void FireIntent()
+        {
+            // Build out intent payload by deserializing a standard FDC3 payload
+            var intent = JsonConvert.DeserializeObject<Intent>(@"{
+'name': 'StartCall',
+'context': {
+     'type': 'fdc3.contact',
+     'name': 'John McHugh',
+     'id': {
+                'email': 'john.mchugh@gmail.com'
+     }
+        }
+}");
+
+            try
+            {
+                // Invoke the intent
+                var result = await _interopClient.FireIntentAsync(intent);
+
+                IntentResultReceived?.Invoke(this, new IntentResolutionReceivedEventArgs(result));
+
+            }
+            catch
+            {
+                Console.WriteLine("Resolver Timeout - User has likely dismissed the target selection dialog");
+                IntentResultReceived?.Invoke(this, new IntentResolutionReceivedEventArgs());
+            }
         }
     }
 }
