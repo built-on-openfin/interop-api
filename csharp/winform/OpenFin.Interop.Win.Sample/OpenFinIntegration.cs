@@ -149,19 +149,19 @@ namespace OpenFin.Interop.Win.Sample
             RuntimeDisconnected?.Invoke(this, EventArgs.Empty);
         }
 
-        public async void FireIntent()
+        public async void FireIntent(string contactName)
         {
             // Build out intent payload by deserializing a standard FDC3 payload
-            var intent = JsonConvert.DeserializeObject<Intent>(@"{
-'name': 'StartCall',
-'context': {
-     'type': 'fdc3.contact',
-     'name': 'John McHugh',
-     'id': {
-                'email': 'john.mchugh@gmail.com'
-     }
-        }
-}");
+            var intent = JsonConvert.DeserializeObject<Intent>(@$"{{
+                'name': 'StartCall',
+                'context': {{
+                     'type': 'fdc3.contact',
+                     'name': '{contactName}',
+                     'id': {{
+                                'email': '{_dataSource.GetEmail(contactName)}'
+                     }}
+                        }}
+                }}");
 
             try
             {
