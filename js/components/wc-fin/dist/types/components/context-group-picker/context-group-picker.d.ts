@@ -48,7 +48,7 @@ export declare class ContextGroupPicker {
   joinContextGroup(contextGroupId: string, viewIdentity?: any): Promise<void>;
   leaveContextGroup(viewIdentity?: any): Promise<void>;
   saveSelectedContextGroup(contextGroupId: string): Promise<void>;
-  updateContextGroup(contextGroupId: string, viewIdentity?: any, deselectOnMatch?: boolean): Promise<void>;
+  updateContextGroup(contextGroupId: string, viewIdentity?: unknown, deselectOnMatch?: boolean): Promise<void>;
   private showContextList;
   private hideContextList;
   private getContextGroupTooltip;

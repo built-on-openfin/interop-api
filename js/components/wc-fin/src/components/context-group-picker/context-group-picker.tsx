@@ -1,7 +1,5 @@
 import { Component, Prop, h, State } from '@stencil/core';
 
-const fin = window['fin'];
-
 @Component({
   tag: 'fin-context-group-picker',
   styleUrl: 'context-group-picker.css',
@@ -110,7 +108,7 @@ export class ContextGroupPicker {
     }
   }
 
-  async updateContextGroup(contextGroupId: string, viewIdentity?: any, deselectOnMatch = true) {
+  async updateContextGroup(contextGroupId: string, viewIdentity?: unknown, deselectOnMatch = true) {
     let selectedContextGroup = this.availableContextGroups.find(entry => entry.id === contextGroupId);
 
     if (selectedContextGroup !== null && selectedContextGroup !== undefined) {
@@ -167,15 +165,16 @@ export class ContextGroupPicker {
       if (this.bindViews && fin.me.isWindow === true) {
         let win = await fin.Window.getCurrent();
         win.on('view-attached', async attachedView => {
+          const attachedViewIdentity = { uuid: attachedView.uuid, name: attachedView.name}
           if (this.contextGroupId !== undefined) {
             setTimeout(async () => {
-              await this.updateContextGroup(this.contextGroupId, attachedView.viewIdentity, false);
+              await this.updateContextGroup(this.contextGroupId, attachedViewIdentity, false);
             }, 1000);
           } else {
-            let view = fin.View.wrapSync(attachedView.viewIdentity);
+            let view = fin.View.wrapSync(attachedViewIdentity);
             let options = await view.getOptions();
             if (options.interop !== undefined && options.interop.currentContextGroup !== undefined) {
-              await this.updateContextGroup(options.interop.currentContextGroup, attachedView.viewIdentity);
+              await this.updateContextGroup(options.interop.currentContextGroup, attachedViewIdentity);
             }
           }
         });
