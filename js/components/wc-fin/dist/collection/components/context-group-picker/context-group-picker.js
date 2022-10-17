@@ -1,10 +1,6 @@
-import { r as registerInstance, h } from './index-24bc8e82.js';
-
-const contextGroupPickerCss = ":host{display:block}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}.fade-in{animation:fadeIn ease 1s}";
-
-const ContextGroupPicker = class {
-  constructor(hostRef) {
-    registerInstance(this, hostRef);
+import { h } from '@stencil/core';
+export class ContextGroupPicker {
+  constructor() {
     this.showContextGroupList = false;
     this.contextGroupId = undefined;
     this.iconColor = null;
@@ -198,7 +194,206 @@ const ContextGroupPicker = class {
       return (h("div", { id: "selected-context" }, this.showListOnClick ? (h("span", { onClick: this.showContextList.bind(this), title: this.getContextGroupTooltip(this.contextGroupId, true), style: { padding: '0px 5px', color: `${this.iconColor}` } }, "\u2B24")) : (h("span", { onMouseEnter: this.showContextList.bind(this), title: this.getContextGroupTooltip(this.contextGroupId, true), style: { padding: '0px 5px', color: `${this.iconColor}` } }, "\u2B24"))));
     }
   }
-};
-ContextGroupPicker.style = contextGroupPickerCss;
-
-export { ContextGroupPicker as fin_context_group_picker };
+  static get is() { return "fin-context-group-picker"; }
+  static get encapsulation() { return "shadow"; }
+  static get originalStyleUrls() {
+    return {
+      "$": ["context-group-picker.css"]
+    };
+  }
+  static get styleUrls() {
+    return {
+      "$": ["context-group-picker.css"]
+    };
+  }
+  static get properties() {
+    return {
+      "bindViews": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "Bind views on Context Selection. Only supported when the control is on a window with childViews"
+        },
+        "attribute": "bind-views",
+        "reflect": false,
+        "defaultValue": "true"
+      },
+      "bindSelf": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "Bind the window/view the control is place on when Context Selection is made"
+        },
+        "attribute": "bind-self",
+        "reflect": false,
+        "defaultValue": "true"
+      },
+      "unselectedColor": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "What should the no context group selected color be"
+        },
+        "attribute": "unselected-color",
+        "reflect": false,
+        "defaultValue": "'#ffffff'"
+      },
+      "listDelay": {
+        "type": "number",
+        "mutable": false,
+        "complexType": {
+          "original": "number",
+          "resolved": "number",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "What should the delay be before switching to the list of context groups"
+        },
+        "attribute": "list-delay",
+        "reflect": false,
+        "defaultValue": "500"
+      },
+      "showListOnClick": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "Should the list of available options show when clicked or hovered?"
+        },
+        "attribute": "show-list-on-click",
+        "reflect": false,
+        "defaultValue": "true"
+      },
+      "unselectedText": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "What should the tooltip show when no context group is selected"
+        },
+        "attribute": "unselected-text",
+        "reflect": false,
+        "defaultValue": "'No Context Group Selected' + (this.showListOnClick ? '. Click To Join.': '')"
+      },
+      "selectedText": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "What should the tooltip show for the currently selected context group? Use {0} to represent where the group id should go"
+        },
+        "attribute": "selected-text",
+        "reflect": false,
+        "defaultValue": "'Current Context Is {0}' + (this.showListOnClick ? '. Click To Switch/Leave.': '')"
+      },
+      "joinText": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "What should the tooltip show for joining the context group? Use {0} to represent where the group id should go"
+        },
+        "attribute": "join-text",
+        "reflect": false,
+        "defaultValue": "'Switch to {0} Context Group'"
+      },
+      "leaveText": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "What should the tooltip show for leaving the context group? Use {0} to represent where the group id should go"
+        },
+        "attribute": "leave-text",
+        "reflect": false,
+        "defaultValue": "'Leave {0} Context Group'"
+      },
+      "isQueryStringEnabled": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "Support setting context group by Querystring: ?contextGroupId=green"
+        },
+        "attribute": "is-query-string-enabled",
+        "reflect": false,
+        "defaultValue": "false"
+      }
+    };
+  }
+  static get states() {
+    return {
+      "showContextGroupList": {},
+      "contextGroupId": {}
+    };
+  }
+}
