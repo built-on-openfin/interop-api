@@ -4,3 +4,5 @@ csharp/winform/OpenFin.Interop.Win.Sample/obj/
 csharp/winform/OpenFin.Interop.Win.Sample/bin/
 
 csharp/winform/OpenFin.Interop.Win.Sample/.vs/
+
+node_modules
