@@ -2,6 +2,12 @@
 
 import type { Components, JSX } from "../types/components";
 
+interface ContextMenuPicker extends Components.ContextMenuPicker, HTMLElement {}
+export const ContextMenuPicker: {
+  prototype: ContextMenuPicker;
+  new (): ContextMenuPicker;
+};
+
 interface FinContextGroupPicker extends Components.FinContextGroupPicker, HTMLElement {}
 export const FinContextGroupPicker: {
   prototype: FinContextGroupPicker;

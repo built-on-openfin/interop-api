@@ -1,5 +1,19 @@
-import { HTMLElement, h, proxyCustomElement } from '@stencil/core/internal/client';
+import { HTMLElement, h, Host, proxyCustomElement } from '@stencil/core/internal/client';
 export { setAssetPath, setPlatformOptions } from '@stencil/core/internal/client';
+
+const contextMenuPickerCss = ":host{display:block}";
+
+const ContextMenuPicker$1 = class extends HTMLElement {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+  }
+  render() {
+    return (h(Host, null, h("slot", null)));
+  }
+  static get style() { return contextMenuPickerCss; }
+};
 
 const contextGroupPickerCss = ":host{display:block}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}.fade-in{animation:fadeIn ease 1s}";
 
@@ -208,11 +222,13 @@ const ContextGroupPicker = class extends HTMLElement {
   static get style() { return contextGroupPickerCss; }
 };
 
+const ContextMenuPicker = /*@__PURE__*/proxyCustomElement(ContextMenuPicker$1, [1,"context-menu-picker"]);
 const FinContextGroupPicker = /*@__PURE__*/proxyCustomElement(ContextGroupPicker, [1,"fin-context-group-picker",{"bindViews":[4,"bind-views"],"bindSelf":[4,"bind-self"],"unselectedColor":[1,"unselected-color"],"listDelay":[2,"list-delay"],"showListOnClick":[4,"show-list-on-click"],"unselectedText":[1,"unselected-text"],"selectedText":[1,"selected-text"],"joinText":[1,"join-text"],"leaveText":[1,"leave-text"],"isQueryStringEnabled":[4,"is-query-string-enabled"],"showContextGroupList":[32],"contextGroupId":[32]}]);
 const defineCustomElements = (opts) => {
   if (typeof customElements !== 'undefined') {
     [
-      FinContextGroupPicker
+      ContextMenuPicker,
+  FinContextGroupPicker
     ].forEach(cmp => {
       if (!customElements.get(cmp.is)) {
         customElements.define(cmp.is, cmp, opts);
@@ -221,4 +237,4 @@ const defineCustomElements = (opts) => {
   }
 };
 
-export { FinContextGroupPicker, defineCustomElements };
+export { ContextMenuPicker, FinContextGroupPicker, defineCustomElements };

@@ -1,0 +1,1 @@
+import{r as s,h as r,H as t}from"./p-12ce44a2.js";const o=class{constructor(r){s(this,r)}render(){return r(t,null,r("slot",null))}};o.style=":host{display:block}";export{o as context_menu_picker}

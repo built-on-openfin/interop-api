@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 export namespace Components {
+    interface ContextMenuPicker {
+    }
     interface FinContextGroupPicker {
         /**
           * Bind the window/view the control is place on when Context Selection is made
@@ -50,6 +52,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLContextMenuPickerElement extends Components.ContextMenuPicker, HTMLStencilElement {
+    }
+    var HTMLContextMenuPickerElement: {
+        prototype: HTMLContextMenuPickerElement;
+        new (): HTMLContextMenuPickerElement;
+    };
     interface HTMLFinContextGroupPickerElement extends Components.FinContextGroupPicker, HTMLStencilElement {
     }
     var HTMLFinContextGroupPickerElement: {
@@ -57,10 +65,13 @@ declare global {
         new (): HTMLFinContextGroupPickerElement;
     };
     interface HTMLElementTagNameMap {
+        "context-menu-picker": HTMLContextMenuPickerElement;
         "fin-context-group-picker": HTMLFinContextGroupPickerElement;
     }
 }
 declare namespace LocalJSX {
+    interface ContextMenuPicker {
+    }
     interface FinContextGroupPicker {
         /**
           * Bind the window/view the control is place on when Context Selection is made
@@ -104,6 +115,7 @@ declare namespace LocalJSX {
         "unselectedText"?: string;
     }
     interface IntrinsicElements {
+        "context-menu-picker": ContextMenuPicker;
         "fin-context-group-picker": FinContextGroupPicker;
     }
 }
@@ -111,6 +123,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "context-menu-picker": LocalJSX.ContextMenuPicker & JSXBase.HTMLAttributes<HTMLContextMenuPickerElement>;
             "fin-context-group-picker": LocalJSX.FinContextGroupPicker & JSXBase.HTMLAttributes<HTMLFinContextGroupPickerElement>;
         }
     }

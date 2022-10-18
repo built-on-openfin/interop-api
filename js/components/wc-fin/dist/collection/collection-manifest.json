@@ -1,6 +1,7 @@
 {
   "entries": [
-    "./components/context-group-picker/context-group-picker.js"
+    "./components/context-group-picker/context-group-picker.js",
+    "./components/context-menu-picker/context-menu-picker.js"
   ],
   "compiler": {
     "name": "@stencil/core",

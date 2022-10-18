@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-55f395b9.js';
+import { r as registerInstance, h } from './index-ed7f248d.js';
 
 const contextGroupPickerCss = ":host{display:block}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}.fade-in{animation:fadeIn ease 1s}";
 
