@@ -20,9 +20,12 @@ namespace OpenFin.Interop.Win.Sample
             instruments = new BindingSource();
             instruments.DataSource = instrumentsList;
 
-            List<string> contactList = new List<string> {                                     
-                                     "John Bond",
+            List<string> contactList = new List<string> {     
+                                     "Avi Green",
+                                     "Ashley James",
+                                     "James Bond",
                                      "John Mandia",
+                                     "John McHugh",
                                      "Lauren Boyle",
                                      "Sean Forbes",
                                      "Stella Pavlova",
@@ -54,9 +57,19 @@ namespace OpenFin.Interop.Win.Sample
 
             switch (name)
             {
-                case "John Bond":
+                case "Avi Green":
                     {
-                        email = "bond_john@grandhotels.com";
+                        email = "avi.green@3rnfnf.onmicrosoft.com";
+                        break;
+                    }
+                case "Ashley James":
+                    {
+                        email = "ashley.james@3rnfnf.onmicrosoft.com";
+                        break;
+                    }
+                case "James Bond":
+                    {
+                        email = "bond_james@grandhotels.com";
                         break;
                     }
                 case "John Mandia":
@@ -64,29 +77,29 @@ namespace OpenFin.Interop.Win.Sample
                         email = "john.mandia@openfin.co";
                         break;
                     }
+                case "John McHugh":
+                    {
+                        email = "john.mchugh@gmail.com";
+                        break;
+                    }
                 case "Lauren Boyle":
                     {
-                        email = "lboyle@uog.com";
+                        email = "lauren.boyle@3rnfnf.onmicrosoft.com";
                         break;
                     }
                 case "Sean Forbes":
                     {
-                        email = "sean@edge.com";
-                        break;
-                    }
-                case "Stella Pavlova":
-                    {
-                        email = "spavlova@uog.com";
+                        email = "sean.forbes@3rnfnf.onmicrosoft.com";
                         break;
                     }
                 case "Tim Barr":
                     {
-                        email = "barr_tim@grandhotels.com";
+                        email = "tim.barr@3rnfnf.onmicrosoft.com";
                         break;
                     }
                 case "Tom Ripley":
                     {
-                        email = "tripley@uog.com";
+                        email = "tom.ripley@3rnfnf.onmicrosoft.com";
                         break;
                     }
             }
