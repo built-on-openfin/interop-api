@@ -20,7 +20,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { attachProps, dashToPascalCase, defineCustomElement, setRef, } from './utils';
+import { attachProps, dashToPascalCase, defineCustomElement, setRef } from './utils';
 export const createOverlayComponent = (tagName, controller, customElement) => {
     defineCustomElement(tagName, customElement);
     const displayName = dashToPascalCase(tagName);

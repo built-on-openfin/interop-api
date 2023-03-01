@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-4b245f3b.js';
+import { r as registerInstance, h } from './index-4a210114.js';
 
 const contextGroupPickerCss = ":host{display:block}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}.fade-in{animation:fadeIn ease 1s}";
 
@@ -6,50 +6,20 @@ const fin = window['fin'];
 const ContextGroupPicker = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.showContextGroupList = false;
-    this.contextGroupId = undefined;
     this.iconColor = null;
     this.iconId = null;
     this.availableContextGroups = [];
-    /**
-     * Bind views on Context Selection. Only supported when the control is on a window with childViews
-     */
+    this.showContextGroupList = false;
+    this.contextGroupId = undefined;
     this.bindViews = true;
-    /**
-     * Bind the window/view the control is place on when Context Selection is made
-     */
     this.bindSelf = true;
-    /**
-     * What should the no context group selected color be
-     */
     this.unselectedColor = '#ffffff';
-    /**
-     * What should the delay be before switching to the list of context groups
-     */
     this.listDelay = 500;
-    /**
-     * Should the list of available options show when clicked or hovered?
-     */
     this.showListOnClick = true;
-    /**
-     * What should the tooltip show when no context group is selected
-     */
     this.unselectedText = 'No Context Group Selected' + (this.showListOnClick ? '. Click To Join.' : '');
-    /**
-     * What should the tooltip show for the currently selected context group? Use {0} to represent where the group id should go
-     */
     this.selectedText = 'Current Context Is {0}' + (this.showListOnClick ? '. Click To Switch/Leave.' : '');
-    /**
-     * What should the tooltip show for joining the context group? Use {0} to represent where the group id should go
-     */
     this.joinText = 'Switch to {0} Context Group';
-    /**
-     * What should the tooltip show for leaving the context group? Use {0} to represent where the group id should go
-     */
     this.leaveText = 'Leave {0} Context Group';
-    /**
-     * Support setting context group by Querystring: ?contextGroupId=green
-     */
     this.isQueryStringEnabled = false;
   }
   async joinContextGroup(contextGroupId, viewIdentity) {
@@ -202,3 +172,5 @@ const ContextGroupPicker = class {
 ContextGroupPicker.style = contextGroupPickerCss;
 
 export { ContextGroupPicker as fin_context_group_picker };
+
+//# sourceMappingURL=fin-context-group-picker.entry.js.map
