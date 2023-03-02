@@ -10,7 +10,7 @@ export const setRef = (ref, value) => {
 };
 export const mergeRefs = (...refs) => {
     return (value) => {
-        refs.forEach(ref => {
+        refs.forEach((ref) => {
             setRef(ref, value);
         });
     };
@@ -23,9 +23,7 @@ export const createForwardRef = (ReactComponent, displayName) => {
     return React.forwardRef(forwardRef);
 };
 export const defineCustomElement = (tagName, customElement) => {
-    if (customElement !== undefined &&
-        typeof customElements !== 'undefined' &&
-        !customElements.get(tagName)) {
+    if (customElement !== undefined && typeof customElements !== 'undefined' && !customElements.get(tagName)) {
         customElements.define(tagName, customElement);
     }
 };
