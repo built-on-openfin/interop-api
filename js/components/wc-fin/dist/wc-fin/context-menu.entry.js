@@ -16,12 +16,8 @@ const ContextMenu = class {
           visible: {
             isEditable: true,
           },
-          click: (target) => {
-            console.log(target);
-          },
           data: Object.assign({}, i),
         }));
-        console.log('template', this.template);
       }
     };
     this.intentName = undefined;
@@ -31,9 +27,10 @@ const ContextMenu = class {
     ev.preventDefault();
     await this.setupContextMenu(this.intentName);
     const template = this.template;
-    console.log(this.template[0]);
+    console.log("Template", template);
     const win = fin.Window.wrapSync(this.currentWin.identity);
-    win.showPopupMenu({ template });
+    const result = await win.showPopupMenu({ template });
+    console.log("result", result);
   }
   render() {
     return (h(Host, null, h("slot", null)));

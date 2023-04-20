@@ -15,16 +15,17 @@ export class ContextMenu {
   availableIntents;
   template;
   currentWin;
-  
+
   @Prop() intentName;
   @Listen('contextmenu', { target: 'window', capture: true })
   async handleContextMenu(ev) {
     ev.preventDefault();
     await this.setupContextMenu(this.intentName);
     const template = this.template;
-    console.log(this.template[0])
+    console.log("Template", template)
     const win = fin.Window.wrapSync(this.currentWin.identity);
-    win.showPopupMenu({ template });
+    const result = await win.showPopupMenu({ template });
+    console.log("result", result)
   }
 
   setupContextMenu = async (intentName = 'ViewChart') => {
@@ -37,12 +38,9 @@ export class ContextMenu {
         visible: {
           isEditable: true,
         },
-        click: (target) => {
-          console.log(target)
-        },
+
         data: { ...i },
       }));
-      console.log('template', this.template);
     }
   };
 
